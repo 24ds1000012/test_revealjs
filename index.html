@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Q2 FY25 Earnings — Interactive Reveal.js Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Reveal core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+
+  <!-- Code syntax highlighting theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+
+  <style>
+    .subtitle { font-size: 1.1rem; opacity: 0.85; }
+    .small { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide -->
+      <section>
+        <h1>Quarterly Earnings Report</h1>
+        <p class="subtitle">Prepared by Technical Consultant</p>
+        <p>Contact: <a href="mailto:24ds1000012@ds.study.iitm.ac.in">24ds1000012@ds.study.iitm.ac.in</a></p>
+        <aside class="notes">
+          Welcome the audience, confirm the agenda, and mention that an appendix is included at the end for deep-dives.
+        </aside>
+      </section>
+
+      <!-- Markdown slide -->
+      <section data-markdown>
+        <textarea data-template>
+## KPI Highlights _(Markdown)_
+
+- **Revenue:** $\$3.2\text{ Bn}$ *(+12% YoY)*
+- **Operating Margin:** $18\%$
+- **EPS:** $\dfrac{\text{Net Income}}{\text{Weighted Avg. Shares}}$
+- **Free Cash Flow:** $\$820\text{ M}$
+
+Note:
+- Call out key revenue drivers.
+- Mention one-off items impacting margin.
+- Invite questions on EPS reconciliation.
+        </textarea>
+      </section>
+
+      <!-- Animated fragments -->
+      <section>
+        <h2>Outlook — reveal progressively</h2>
+        <ul>
+          <li class="fragment">FY guidance maintained</li>
+          <li class="fragment">Cost optimization benefits in H2</li>
+          <li class="fragment">Share buyback extension proposed</li>
+        </ul>
+        <aside class="notes">
+          Use each bullet as a pause point and gauge stakeholder sentiment.
+        </aside>
+      </section>
+
+      <!-- Math slide -->
+      <section>
+        <h2>Financial Formulae (Math)</h2>
+        <p>Net Present Value (NPV):</p>
+        <p>
+          $$\mathrm{NPV}(r, C_0,\ldots,C_T)=\sum_{t=0}^{T}\frac{C_t}{(1+r)^t}$$
+        </p>
+        <p>Weighted Average Cost of Capital (WACC):</p>
+        <p>
+          $$\mathrm{WACC}=\frac{E}{D+E}R_e+\frac{D}{D+E}R_d(1-T)$$
+        </p>
+        <aside class="notes">
+          Remind the audience that the discount rate assumptions are documented in the appendix.
+        </aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting -->
+      <section>
+        <h2>Code Sample (with highlight.js)</h2>
+<pre><code class="language-python">def npv(rate, cashflows):
+    return sum(cf / ((1 + rate) ** t) for t, cf in enumerate(cashflows))
+
+r = 0.09
+cashflows = [-1_000_000, 350_000, 420_000, 500_000, 300_000]
+print(npv(r, cashflows))
+</code></pre>
+        <aside class="notes">
+          Explain how finance notebooks compute KPIs that feed the presentation.
+        </aside>
+      </section>
+
+      <!-- Appendix with fragments -->
+      <section>
+        <h2>Appendix — Data Sources</h2>
+        <ul>
+          <li><span class="fragment">ERP: General Ledger</span></li>
+          <li><span class="fragment">CRM: Pipeline &amp; Bookings</span></li>
+          <li><span class="fragment">Finance: Treasury &amp; FX</span></li>
+        </ul>
+        <aside class="notes">
+          Offer to deep-dive into any data lineage or reconciliation questions here.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ],
+      // MathJax 3 is auto-loaded by the math plugin; this config enables inline $...$
+      mathjax3: {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      }
+    });
+  </script>
+</body>
+</html>
