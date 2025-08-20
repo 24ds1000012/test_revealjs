@@ -1,131 +1,159 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Q2 FY25 Earnings — Interactive Reveal.js Deck</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quarterly Earnings — Interactive RevealJS Deck</title>
 
-  <!-- Reveal core CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" id="theme" />
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
 
-  <!-- Code syntax highlighting theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css" />
+  <!-- Code highlight theme (uses highlight.js default) -->
+  <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.9.0/styles/default.min.css" />
 
   <style>
-    .subtitle { font-size: 1.1rem; opacity: 0.85; }
-    .small { font-size: 0.9rem; }
+    .email { font-weight: 600; letter-spacing: 0.3px; }
+    .kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .kpi .card { border-radius: 1rem; padding: 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,.2); background: rgba(255,255,255,.06); }
+    .footnote { font-size: .6em; opacity: .8; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- Title slide -->
+      <!-- Title Slide -->
       <section>
-        <h1>Quarterly Earnings Report</h1>
-        <p class="subtitle">Prepared by Technical Consultant</p>
-        <p>Contact: <a href="mailto:24ds1000012@ds.study.iitm.ac.in">24ds1000012@ds.study.iitm.ac.in</a></p>
+        <h1>Q<span class="fragment">2</span> Earnings Report</h1>
+        <p class="fragment">for Major Financial Institution</p>
+        <p class="fragment email">Contact: <a href="mailto:24ds1000012@ds.study.iitm.ac.in">24ds1000012@ds.study.iitm.ac.in</a></p>
         <aside class="notes">
-          Welcome the audience, confirm the agenda, and mention that an appendix is included at the end for deep-dives.
+          Welcome the audience. State the purpose: share financial performance, drivers, and outlook.
+          Mention that the deck is interactive: fragments, code, math, and speaker notes.
         </aside>
       </section>
 
-      <!-- Markdown slide -->
+      <!-- KPI Slide with Fragments (animated elements) -->
+      <section>
+        <h2>Headline KPIs</h2>
+        <div class="kpi">
+          <div class="card fragment">
+            <h3>Revenue</h3>
+            <p>$3.42B <span class="footnote">(+7.1% YoY)</span></p>
+          </div>
+          <div class="card fragment">
+            <h3>Net Income</h3>
+            <p>$612M <span class="footnote">(+4.4% YoY)</span></p>
+          </div>
+          <div class="card fragment">
+            <h3>EPS (diluted)</h3>
+            <p>$1.83 <span class="footnote">(+5.2% YoY)</span></p>
+          </div>
+        </div>
+        <aside class="notes">
+          Unveil each KPI as you discuss drivers: revenue mix, margin expansion, and share count.
+        </aside>
+      </section>
+
+      <!-- Markdown Slide (at least one slide written in Markdown) -->
       <section data-markdown>
         <textarea data-template>
-## KPI Highlights _(Markdown)_
+### Business Highlights _(Markdown slide)_
 
-- **Revenue:** $\$3.2\text{ Bn}$ *(+12% YoY)*
-- **Operating Margin:** $18\%$
-- **EPS:** $\dfrac{\text{Net Income}}{\text{Weighted Avg. Shares}}$
-- **Free Cash Flow:** $\$820\text{ M}$
+- **Retail Banking:** Loan growth *fragmented by region*, resilient NIM
+- **Wealth Management:** AuM inflows continued for 8th quarter
+- **Markets & IB:** Rates & FX drove trading; ECM pipeline rebuilding
 
-Note:
-- Call out key revenue drivers.
-- Mention one-off items impacting margin.
-- Invite questions on EPS reconciliation.
+> Guidance maintained; risk-weighted assets stable.
+
+*Speaker cue:* touch on deposit beta and hedging program.
         </textarea>
-      </section>
-
-      <!-- Animated fragments -->
-      <section>
-        <h2>Outlook — reveal progressively</h2>
-        <ul>
-          <li class="fragment">FY guidance maintained</li>
-          <li class="fragment">Cost optimization benefits in H2</li>
-          <li class="fragment">Share buyback extension proposed</li>
-        </ul>
         <aside class="notes">
-          Use each bullet as a pause point and gauge stakeholder sentiment.
+          Call out that this slide is written in Markdown using the markdown plugin. Keep bullets at a high level.
         </aside>
       </section>
 
-      <!-- Math slide -->
+      <!-- Code Sample with Syntax Highlighting -->
       <section>
-        <h2>Financial Formulae (Math)</h2>
+        <h2>Data Sanity Check (Code Sample)</h2>
+        <pre><code class="language-python" data-trim>
+import pandas as pd
+
+def yoy_growth(cur, prev):
+    """Return YoY growth as percentage."""
+    return (cur/prev - 1) * 100
+
+revenue_q2_25 = 3.42e9
+revenue_q2_24 = 3.19e9
+print(f"YoY Revenue Growth: {yoy_growth(revenue_q2_25, revenue_q2_24):.1f}%")
+        </code></pre>
+        <aside class="notes">
+          Explain that code blocks are auto-highlighted via highlight.js; this example mirrors internal checks.
+        </aside>
+      </section>
+
+      <!-- Math / Financial Formulas -->
+      <section>
+        <h2>Valuation & Return Math</h2>
         <p>Net Present Value (NPV):</p>
-        <p>
-          $$\mathrm{NPV}(r, C_0,\ldots,C_T)=\sum_{t=0}^{T}\frac{C_t}{(1+r)^t}$$
-        </p>
-        <p>Weighted Average Cost of Capital (WACC):</p>
-        <p>
-          $$\mathrm{WACC}=\frac{E}{D+E}R_e+\frac{D}{D+E}R_d(1-T)$$
-        </p>
+        <p>\[\text{NPV} = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0\]</p>
+        <p>Cost of Equity (CAPM):</p>
+        <p>\[\;k_e = r_f + \beta (r_m - r_f)\;\]</p>
+        <p>Dividend Discount Model (Gordon Growth):</p>
+        <p>\[\;P_0 = \frac{D_1}{k_e - g}\;\]</p>
         <aside class="notes">
-          Remind the audience that the discount rate assumptions are documented in the appendix.
+          Use these to tie outlook to valuation. Clarify assumptions for r, g, and beta.
         </aside>
       </section>
 
-      <!-- Code sample with syntax highlighting -->
+      <!-- Narrative with step-by-step fragments -->
       <section>
-        <h2>Code Sample (with highlight.js)</h2>
-<pre><code class="language-python">def npv(rate, cashflows):
-    return sum(cf / ((1 + rate) ** t) for t, cf in enumerate(cashflows))
-
-r = 0.09
-cashflows = [-1_000_000, 350_000, 420_000, 500_000, 300_000]
-print(npv(r, cashflows))
-</code></pre>
-        <aside class="notes">
-          Explain how finance notebooks compute KPIs that feed the presentation.
-        </aside>
-      </section>
-
-      <!-- Appendix with fragments -->
-      <section>
-        <h2>Appendix — Data Sources</h2>
+        <h2>Outlook (Next 2 Quarters)</h2>
         <ul>
-          <li><span class="fragment">ERP: General Ledger</span></li>
-          <li><span class="fragment">CRM: Pipeline &amp; Bookings</span></li>
-          <li><span class="fragment">Finance: Treasury &amp; FX</span></li>
+          <li class="fragment">Moderate loan growth; deposit costs stabilizing</li>
+          <li class="fragment">Fee income tailwinds from custody & cards</li>
+          <li class="fragment">Expense discipline; tech productivity offsets inflation</li>
+          <li class="fragment">Capital returning via buybacks subject to CCAR</li>
         </ul>
         <aside class="notes">
-          Offer to deep-dive into any data lineage or reconciliation questions here.
+          Advance one bullet at a time; pair with sensitivity analysis later in Q&A.
+        </aside>
+      </section>
+
+      <!-- Closing slide with email again -->
+      <section>
+        <h2>Questions?</h2>
+        <p>Contact: <span class="email">24ds1000012@ds.study.iitm.ac.in</span></p>
+        <aside class="notes">
+          Invite questions. Offer to share appendix with scenario tables if requested.
         </aside>
       </section>
 
     </div>
   </div>
 
-  <!-- Reveal core JS -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
-
-  <!-- Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+  <!-- Reveal.js core + plugins -->
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/math/math.js"></script>
 
   <script>
-    Reveal.initialize({
+    // Initialize Reveal with desired plugins
+    const deck = new Reveal({
       hash: true,
-      slideNumber: 'c/t',
-      transition: 'slide',
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ],
-      // MathJax 3 is auto-loaded by the math plugin; this config enables inline $...$
-      mathjax3: {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      slideNumber: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      // Optional: center content and enable fragments nicely
+      center: true
+    });
+    deck.initialize({
+      // KaTeX options for math rendering
+      math: {
+        // KaTeX auto-renderer is bundled by the plugin
+        // You can pass KaTeX options here if needed
       }
     });
   </script>
